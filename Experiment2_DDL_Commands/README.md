@@ -105,123 +105,226 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+-- Create a table named Departments with the following columns:
+
+DepartmentID as INTEGER
+DepartmentName as TEXT
+For example:
 
 ```sql
--- Paste your SQL code below for Question 1
+--
+create table Departments(
+DepartmentID INTEGER,
+DepartmentName TEXT
+);
 ```
 
 **Output:**
+![Screenshot 2025-04-29 082728](https://github.com/user-attachments/assets/fb35f24d-949b-4521-8fe6-46d744d5330d)
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+-- Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0
 
 ```sql
--- Paste your SQL code below for Question 2
+-- 
+create table Invoices(
+InvoiceID INTEGER primary key,
+InvoiceDate DATE,
+DueDate DATE check(DueDate>InvoiceDate),
+Amount REAL check (Amount>0)
+);
 ```
 
 **Output:**
+![Screenshot 2025-04-29 082904](https://github.com/user-attachments/assets/c27a5da3-26a1-4f31-b42f-c55e5c65e6f4)
 
-![Output2](output.png)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+-- Insert a record with EmployeeID 001, Name Sarah Parker, Position Manager, Department HR, and Salary 60000 into the Employee table.
 
 ```sql
--- Paste your SQL code below for Question 3
+--
+insert into Employee(EmployeeID,Name,Position,Department,Salary)
+values(001,'Sarah Parker','Manager','HR',60000);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![Output3]![Screenshot 2025-04-29 083050](https://github.com/user-attachments/assets/c1ff9c39-7472-4324-b96a-7d532346713a)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+--
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 4
+--
+CREATE TABLE Shipments(
+ShipmentID INTEGER PRIMARY KEY,
+ShipmentDate DATE NOT NULL,
+SupplierID INTEGER NOT NULL,
+OrderId INTEGER NOT NULL,
+FOREIGN KEY (SupplierId)REFERENCES Suppliers(SupplierId),
+FOREIGN KEY (OrderId) REFERENCES Orders(OrderID)
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+![Output4]![Screenshot 2025-04-29 083236](https://github.com/user-attachments/assets/ac3fddba-1f15-4187-9322-051088f8554f)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+--
+Insert all customers from Old_customers into Customers
+
+Table attributes are CustomerID, Name, Address, Email
 
 ```sql
--- Paste your SQL code below for Question 5
+--
+INSERT INTO Customers(CustomerID, Name, Address,Email)
+SELECT CustomerID,Name, Address, Email
+FROM Old_customers;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![Output5]![Screenshot 2025-04-29 083402](https://github.com/user-attachments/assets/de4840bc-7ff3-403a-a28c-8c02f26fd719)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+--
+In the Student_details table, insert a student record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+
+RollNo      Name            Gender      Subject      MARKS
+----------  ------------    ----------  ----------   ----------
+205         Olivia Green    F
+207         Liam Smith      M           Mathematics  85
+208         Sophia Johnson  F           Science
 
 ```sql
--- Paste your SQL code below for Question 6
+--
+INSERT INTO Student_details (RollNo,Name ,Gender, Subject,MARKS)
+VALUES(205, 'Olivia Green','F',NULL,NULL),
+(207 ,'Liam Smith','M','Mathematic',85),
+(208,'Sophia Johns','F','Science',NULL);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![Output6]![Screenshot 2025-04-29 083536](https://github.com/user-attachments/assets/2cd20d3c-41c4-45bd-b097-e4b976d4e694)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+-- 
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should cascade updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 7
+--
+create table item(
+item_id TEXT primary key,
+item_desc TEXT NOT NULL,
+rate INT NOT NULL,
+icom_id TEXT (4),
+foreign key(icom_id)REFERENCES company (com_id)
+on update cascade
+on delete cascade
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+![Output7]![Screenshot 2025-04-29 083709](https://github.com/user-attachments/assets/baa4d910-896e-4de3-9d34-59dce13b39b9)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+-- 
+create a table named jobs including columns job_id, job_title, min_salary and max_salary, and make sure that, the default value for job_title is blank and min_salary is 8000 and max_salary is NULL will be entered automatically at the time of insertion if no value assigned for the specified columns.
 
 ```sql
--- Paste your SQL code below for Question 8
+--
+create table jobs(
+job_id INTEGER,
+job_title TEXT ,
+min_salary INTEGER DEFAULT 8000,
+max_salary INTEGER DEFAULT NULL
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+![Output8]![Screenshot 2025-04-29 084046](https://github.com/user-attachments/assets/c3bf9ec9-c9d5-4d18-8ee3-b53cd0e8a523)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+--
+Write a SQL Query  to add attribute Date_of_joining as Date and rename the attribute job_title as Designation in the table 'Employees'
 
 ```sql
--- Paste your SQL code below for Question 9
+-
+ALTER TABLE Employees
+ADD Date_of_joining  Date;
+
+ALTER TABLE Employees
+RENAME COLUMN job_title TO Designation;
+
 ```
 
 **Output:**
 
-![Output9](output.png)
+![Output9]![Screenshot 2025-04-29 084308](https://github.com/user-attachments/assets/71b91683-b9ec-4a0f-9f56-aa85e9523d33)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+--
+Write a SQL query to Add a new column named "discount" with the data type DECIMAL(5,2) to the "customer" table.
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+ 
 
 ```sql
--- Paste your SQL code below for Question 10
+--
+ALTER TABLE customer
+Add column discount DECIMAL(5,2);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![Output10]![Screenshot 2025-04-29 084424](https://github.com/user-attachments/assets/731268a8-83f9-4349-a575-c82322010305)
+
 
 
 ## RESULT
