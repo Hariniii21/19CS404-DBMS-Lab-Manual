@@ -38,7 +38,10 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
+--
+What is the count of male and female patients?
+
+Sample table: Patients Table
 
 ```sql
 -- Paste your SQL code below for Question 1
